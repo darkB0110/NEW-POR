@@ -1,896 +1,1093 @@
 <!doctype html>
 <html lang="en" class="h-full">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Thompson — IT Expert, Virtual Assistant & Business Analyst</title>
-
-  <!-- SEO & Social -->
-  <meta name="description" content="Alex Thompson — IT expert with 8+ years experience in system optimization, virtual assistance, customer care, and business analysis. See featured projects and get in touch." />
-  <meta name="keywords" content="IT expert, virtual assistant, business analyst, customer care, CRM, automation, network security, data analytics" />
-  <meta name="author" content="Alex Thompson" />
-  <meta name="robots" content="index,follow" />
-  <meta property="og:title" content="Alex Thompson — IT Expert Portfolio" />
-  <meta property="og:description" content="IT expert specializing in system optimization, virtual assistance, customer care and business analysis. Explore projects and contact for collaboration." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/portfolio" />
-  <meta property="og:image" content="https://example.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="@alexthompson" />
-
-  <!-- Link to resume (machine-discoverable) -->
-  <link rel="alternate" type="application/pdf" title="Alex Thompson — Resume (PDF)" href="https://example.com/resume.pdf" />
-
-  <!-- Structured data (JSON-LD) for Person / Portfolio and the downloadable resume -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "name": "Alex Thompson",
-        "jobTitle": "IT Expert, Virtual Assistant, Business Analyst",
-        "url": "https://example.com/portfolio",
-        "sameAs": [
-          "https://linkedin.com/in/example",
-          "https://github.com/example"
-        ],
-        "description": "IT expert with 8+ years experience in system optimization, virtual assistance, customer care, and business analysis.",
-        "knowsAbout": ["System administration", "Network security", "CRM", "Automation", "Data analytics"],
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Independent Consultant"
-        }
-      },
-      {
-        "@type": "MediaObject",
-        "@id": "https://example.com/resume.pdf",
-        "name": "Alex Thompson — Resume (PDF)",
-        "description": "Resume of Alex Thompson — IT Expert, Virtual Assistant, and Business Analyst. Contains work history, skills, projects, and contact information for recruiters.",
-        "contentUrl": "https://example.com/resume.pdf",
-        "encodingFormat": "application/pdf",
-        "fileSize": "120000", 
-        "isAccessibleForFree": true,
-        "potentialAction": {
-          "@type": "DownloadAction",
-          "target": "https://example.com/resume.pdf"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Critical CSS (kept inline to avoid render-blocking external files) -->
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Engineer Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
-    :root{
-      --bg-primary:#f9fafb;
-      --bg-secondary:#ffffff;
-      --bg-accent:#f3f4f6;
-      --text-primary:#111827;
-      --text-secondary:#6b7280;
-      --text-accent:#374151;
-      --red-primary:#991b1b;
-      --red-secondary:#dc2626;
-      --red-light:#fef2f2;
-      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
-      --transition: all 0.25s ease;
-    }
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .dark-theme{
-      --bg-primary:#0b1220;
-      --bg-secondary:#0f1724;
-      --bg-accent:#111827;
-      --text-primary:#f9fafb;
-      --text-secondary:#d1d5db;
-      --text-accent:#e5e7eb;
-      --red-light:#1f2937;
-      --red-accent:#374151;
-    }
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-accent: #334155;
+            --blue-primary: #1e40af;
+            --blue-secondary: #3b82f6;
+            --blue-light: #eff6ff;
+            --green-primary: #059669;
+            --purple-primary: #7c3aed;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 0.75rem;
+        }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      line-height:1.6;
-      color:var(--text-primary);
-      background:var(--bg-primary);
-      transition:var(--transition);
-    }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
 
-    /* Skip link */
-    .skip-link{
-      position: absolute;
-      left: -999px;
-      top: -999px;
-      background:var(--red-primary);
-      color:white;
-      padding:0.5rem 1rem;
-      z-index:1001;
-    }
-    .skip-link:focus{
-      left: 1rem;
-      top: 1rem;
-      border-radius:4px;
-      outline:3px solid rgba(0,0,0,0.1);
-    }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
 
-    /* Theme toggle */
-    .theme-toggle{
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index:1000;
-      background: var(--bg-secondary);
-      border: 2px solid var(--red-secondary);
-      border-radius: 999px;
-      width: 50px;
-      height: 50px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      font-size:1.25rem;
-      box-shadow:var(--shadow);
-      transition:var(--transition);
-    }
-    .theme-toggle:focus{ outline: 3px solid rgba(0,0,0,0.08); outline-offset: 3px; }
-    .theme-toggle:hover{ transform: scale(1.06); box-shadow:var(--shadow-lg) }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
 
-    /* Navbar */
-    .navbar{
-      background:var(--bg-secondary);
-      box-shadow:var(--shadow);
-      position: sticky;
-      top:0;
-      z-index:100;
-    }
-    .nav-container{
-      max-width:1200px;
-      margin:0 auto;
-      padding:0 1.25rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      height:4rem;
-    }
-    .logo{ font-size:1.25rem; font-weight:700; color:var(--red-primary); text-decoration:none }
-    .nav-menu{ display:flex; gap:1rem; list-style:none; margin:0; padding:0 }
-    .nav-link{ color:var(--text-accent); text-decoration:none; font-weight:500; padding:0.35rem 0.6rem; border-radius:6px }
-    .nav-link:hover, .nav-link:focus{ color:var(--red-primary); background:var(--red-light); outline:none }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
 
-    /* Hero */
-    .hero{
-      background: linear-gradient(135deg, var(--red-primary) 0%, #7f1d1d 100%);
-      color: white;
-      padding:4.25rem 1.25rem;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-content{ max-width:820px; margin:0 auto; position:relative; z-index:1 }
-    .hero h1{ font-size:2.25rem; margin-bottom:0.75rem; font-weight:800; animation:fadeInUp 0.9s ease both }
-    .tagline{ font-size:1.05rem; margin-bottom:0.5rem; opacity:0.95 }
-    .description{ font-size:1rem; opacity:0.9; margin-bottom:1.25rem }
+        .logo:hover {
+            color: var(--blue-secondary);
+        }
 
-    .cta-button{
-      display:inline-block;
-      background:white;
-      color:var(--red-primary);
-      padding:0.9rem 1.6rem;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:700;
-      transition:var(--transition);
-    }
-    .cta-button:hover{ transform: translateY(-3px); box-shadow:var(--shadow-lg) }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    @keyframes fadeInUp{ from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none} }
+        .nav-link {
+            color: var(--text-accent);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
 
-    /* Sections */
-    .section{ padding:3rem 1.25rem; max-width:1200px; margin:0 auto }
-    .section-title{ text-align:center; font-size:1.75rem; font-weight:800; margin-bottom:0.5rem; color:var(--text-primary) }
-    .section-subtitle{ text-align:center; color:var(--text-secondary); margin:0 auto 2rem; max-width:640px }
+        .nav-link:hover {
+            color: var(--blue-primary);
+            background: var(--blue-light);
+        }
 
-    /* Services */
-    .services-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1.25rem }
-    .service-card{ background:var(--bg-accent); padding:1.25rem; border-radius:12px; text-align:center; transition:var(--transition); border:2px solid transparent }
-    .service-card:hover{ transform: translateY(-6px); box-shadow:var(--shadow-lg); border-color:var(--red-secondary) }
-    .service-icon{ font-size:2rem; margin-bottom:0.5rem; display:block }
-    .service-title{ font-weight:700; color:var(--text-primary); margin-bottom:0.5rem }
-    .service-description{ color:var(--text-secondary) }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--blue-primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
 
-    /* Projects */
-    .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1rem; margin-top:1.25rem }
-    .project-card{ background:var(--bg-secondary); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); transition:var(--transition) }
-    .project-card:hover{ transform: translateY(-8px); box-shadow:var(--shadow-lg) }
-    .project-header{ padding:1rem; text-align:center; background:linear-gradient(135deg, var(--red-light), var(--red-accent)) }
-    .project-icon{ font-size:2.25rem; display:block; margin-bottom:0.25rem }
-    .project-title{ font-weight:800; font-size:1.1rem; margin-bottom:0.25rem; color:var(--text-primary) }
-    .project-category{ color:var(--red-secondary); font-weight:700; font-size:0.85rem }
+        .nav-link:hover::after {
+            width: 80%;
+        }
 
-    .project-body{ padding:1rem }
-    .project-description{ color:var(--text-secondary); margin-bottom:0.75rem; line-height:1.5 }
-    .project-tech{ display:flex; flex-wrap:wrap; gap:0.375rem; margin-bottom:0.75rem }
-    .tech-tag{ background:var(--red-light); color:var(--red-primary); padding:0.25rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600 }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-primary) 0%, var(--purple-primary) 100%);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .project-meta{ display:flex; justify-content:space-between; align-items:center; padding-top:0.5rem; border-top:1px solid var(--bg-accent) }
-    .project-duration{ color:var(--text-secondary); font-size:0.85rem }
-    .project-link{ color:var(--red-secondary); text-decoration:none; font-weight:700 }
-    .project-link:hover{ color:var(--red-primary) }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
 
-    /* Ratings */
-    .project-rating{ display:flex; align-items:center; gap:0.5rem; margin-top:0.75rem; padding-top:0.5rem; border-top:1px solid var(--bg-accent) }
-    .stars{ display:flex; gap:2px }
-    .star{ color:#fbbf24; font-size:0.95rem }
-    .rating-text{ color:var(--text-secondary); font-size:0.85rem }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-    /* Contact */
-    .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-top:1.25rem }
-    .contact-item{ display:flex; gap:0.75rem; align-items:flex-start }
-    .contact-icon{ background:var(--red-light); padding:0.75rem; border-radius:8px; font-size:1.1rem }
-    .contact-details h4{ margin:0; font-weight:700; color:var(--text-primary); margin-bottom:0.25rem }
-    .contact-details p{ margin:0; color:var(--text-secondary) }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
 
-    .contact-form{ background:var(--bg-accent); padding:1rem; border-radius:12px }
-    .form-group{ margin-bottom:0.75rem }
-    .form-label{ display:block; font-weight:600; color:var(--text-primary); margin-bottom:0.375rem }
-    .form-input, .form-textarea{
-      width:100%; padding:0.6rem; border:2px solid var(--bg-accent); border-radius:8px; background:var(--bg-secondary); color:var(--text-primary)
-    }
-    .form-input:focus, .form-textarea:focus{ outline:none; border-color:var(--red-secondary); box-shadow:0 0 0 3px rgba(220,38,38,0.08) }
-    .form-button{ width:100%; background:var(--red-primary); color:white; padding:0.8rem; border:none; border-radius:8px; font-weight:800; cursor:pointer }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            line-height: 1.1;
+        }
 
-    /* Resume section */
-    .resume-actions{ display:flex; gap:0.75rem; align-items:center; justify-content:center; margin-top:1rem; flex-wrap:wrap }
-    .resume-button{ background:var(--bg-secondary); border:2px solid var(--red-secondary); color:var(--red-primary); padding:0.6rem 1rem; border-radius:8px; cursor:pointer; font-weight:700 }
-    .resume-button:disabled{ opacity:0.6; cursor:not-allowed }
-    .progress{ width:100%; background:var(--bg-accent); height:10px; border-radius:999px; overflow:hidden }
-    .progress-bar{ height:100%; width:0%; background:linear-gradient(90deg,#f59e0b,#f97316); transition:width 0.2s ease }
+        .hero .description {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
 
-    /* Footer */
-    .footer{ background:#0b1220; color:white; text-align:center; padding:1.5rem }
-    .footer .tagline{ color:#9ca3af }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
 
-    /* Accessibility focus */
-    :focus{ outline-offset:3px }
-    .sr-only{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
 
-    @media (max-width:768px){
-      .nav-menu{ display:none }
-      .hero h1{ font-size:1.6rem }
-      .theme-toggle{ top:10px; right:10px; width:40px; height:40px; font-size:1rem }
-      .section{ padding:2rem 0.75rem }
-    }
+        .btn-primary {
+            background: white;
+            color: var(--blue-primary);
+        }
 
-    html{ scroll-behavior: smooth }
-  </style>
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
 
-  <!-- Prefer-reduced-motion support -->
-  <style>
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-    }
-  </style>
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
 
-  <!-- Small helper to prefetch social image (non-blocking) -->
-  <link rel="preload" as="image" href="https://example.com/og-image.png" />
-</head>
+        .btn-secondary:hover {
+            background: white;
+            color: var(--blue-primary);
+        }
 
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  <!-- Accessible theme toggle (JS-managed) -->
-  <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <span id="theme-icon" aria-hidden="true">☀️</span>
-    <span class="sr-only" id="theme-state-text">Light mode</span>
-  </button>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
 
-  <!-- Navigation -->
-  <nav class="navbar" role="navigation" aria-label="Primary navigation">
-    <div class="nav-container">
-      <a href="#home" class="logo" id="site-title">Alex Thompson</a>
-      <ul class="nav-menu" role="menubar" aria-label="Main menu">
-        <li role="none"><a role="menuitem" href="#home" class="nav-link">Home</a></li>
-        <li role="none"><a role="menuitem" href="#about" class="nav-link">About</a></li>
-        <li role="none"><a role="menuitem" href="#projects" class="nav-link">Projects</a></li>
-        <li role="none"><a role="menuitem" href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .about-image {
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-card {
+            background: var(--bg-accent);
+            padding: 3rem 2rem;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue-primary), var(--purple-primary));
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--blue-primary), var(--purple-primary));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .profile-info h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--bg-primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--blue-primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:nth-child(2)::before {
+            background: var(--green-primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: #f0fdf4;
+        }
+
+        .service-card:hover .service-icon {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-accent);
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--green-primary);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--blue-light) 0%, var(--bg-accent) 100%);
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-type {
+            color: var(--blue-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--blue-light);
+            color: var(--blue-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--blue-secondary);
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            space-y: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--blue-primary);
+        }
+
+        .contact-details h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--bg-accent);
+            border-radius: var(--border-radius);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--blue-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-button {
+            width: 100%;
+            background: var(--blue-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-button:hover {
+            background: var(--blue-secondary);
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .tagline {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles for accessibility */
+        .nav-link:focus,
+        .btn:focus,
+        .project-link:focus,
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-button:focus {
+            outline: 2px solid var(--blue-primary);
+            outline-offset: 2px;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="navbar">
+   <div class="nav-container"><a href="#home" class="logo" id="site-title">John Smith</a>
+    <ul class="nav-menu">
+     <li><a href="#home" class="nav-link">Home</a></li>
+     <li><a href="#about" class="nav-link">About</a></li>
+     <li><a href="#services" class="nav-link">Services</a></li>
+     <li><a href="#projects" class="nav-link">Projects</a></li>
+     <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="hero">
+   <div class="hero-content">
+    <div class="hero-badge" id="professional-title">
+     Software Engineer &amp; Call Center Agent
     </div>
-  </nav>
-
-  <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section id="home" class="hero" aria-labelledby="hero-title" role="region">
-      <div class="hero-content">
-        <h1 id="hero-title">Transforming Ideas Into Digital Solutions</h1>
-        <p class="tagline" id="tagline">IT Expert <span aria-hidden="true">|</span> Virtual Assistant <span aria-hidden="true">|</span> Customer Care <span aria-hidden="true">|</span> Business Analyst</p>
-        <p class="description" id="hero-description">Experienced IT professional specializing in system optimization, virtual assistance, customer relationship management, and strategic business analysis. Delivering innovative solutions that drive growth and efficiency.</p>
-        <a href="#projects" class="cta-button">View My Work</a>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about section" aria-labelledby="about-title" role="region">
-      <h2 id="about-title" class="section-title">About Me</h2>
-      <p class="section-subtitle">With over 8 years of experience in IT and business operations, I specialize in creating efficient digital solutions that streamline processes and enhance productivity. My expertise spans across multiple domains, ensuring comprehensive support for your business needs.</p>
-
-      <div class="services-grid" role="list">
-        <article class="service-card" role="listitem" aria-labelledby="service-it">
-          <div class="service-icon" aria-hidden="true">💻</div>
-          <h3 id="service-it" class="service-title">IT Expert</h3>
-          <p class="service-description">System administration, network security, and technical troubleshooting</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="service-va">
-          <div class="service-icon" aria-hidden="true">🤖</div>
-          <h3 id="service-va" class="service-title">Virtual Assistant</h3>
-          <p class="service-description">Administrative support, project management, and process automation</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="service-cc">
-          <div class="service-icon" aria-hidden="true">📞</div>
-          <h3 id="service-cc" class="service-title">Customer Care</h3>
-          <p class="service-description">Client relationship management and support system optimization</p>
-        </article>
-
-        <article class="service-card" role="listitem" aria-labelledby="service-ba">
-          <div class="service-icon" aria-hidden="true">📊</div>
-          <h3 id="service-ba" class="service-title">Business Analyst</h3>
-          <p class="service-description">Data analysis, process improvement, and strategic planning</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="projects section" aria-labelledby="projects-title" role="region">
-      <h2 id="projects-title" class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Showcasing successful implementations and client solutions</p>
-
-      <div class="projects-grid" role="list">
-        <article class="project-card" role="listitem" aria-labelledby="p1-title">
-          <div class="project-header">
-            <span class="project-icon" aria-hidden="true">💼</span>
-            <h3 id="p1-title" class="project-title">Enterprise CRM System</h3>
-            <p class="project-category">Business Analysis &amp; IT</p>
-          </div>
-          <div class="project-body">
-            <p class="project-description">Designed and implemented a comprehensive CRM system for a 500+ employee company, resulting in 40% improved customer retention and streamlined sales processes.</p>
-            <div class="project-tech" aria-hidden="true">
-              <span class="tech-tag">Salesforce</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Power BI</span>
-            </div>
-            <div class="project-meta">
-              <span class="project-duration">Duration: 6 months</span>
-              <a class="project-link" href="#" aria-label="View details for Enterprise CRM System">View Details →</a>
-            </div>
-            <div class="project-rating">
-              <div class="stars" aria-hidden="true">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-              </div>
-              <span class="rating-text">5.0 (12 reviews)</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" role="listitem" aria-labelledby="p2-title">
-          <div class="project-header">
-            <span class="project-icon" aria-hidden="true">🤖</span>
-            <h3 id="p2-title" class="project-title">Automated Support System</h3>
-            <p class="project-category">Customer Care &amp; Virtual Assistant</p>
-          </div>
-          <div class="project-body">
-            <p class="project-description">Built an AI-powered customer support system with automated ticket routing and response suggestions, achieving 70% reduction in response time.</p>
-            <div class="project-tech" aria-hidden="true">
-              <span class="tech-tag">Zendesk API</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">ML</span>
-              <span class="tech-tag">Chatbot</span>
-            </div>
-            <div class="project-meta">
-              <span class="project-duration">Duration: 4 months</span>
-              <a class="project-link" href="#" aria-label="View details for Automated Support System">View Details →</a>
-            </div>
-            <div class="project-rating">
-              <div class="stars" aria-hidden="true">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-              </div>
-              <span class="rating-text">4.9 (8 reviews)</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Contact + Resume -->
-    <section id="contact" class="contact section" aria-labelledby="contact-title" role="region">
-      <h2 id="contact-title" class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">Ready to discuss your next project? Let's connect!</p>
-
-      <div class="contact-grid">
-        <div>
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">📧</div>
-            <div class="contact-details">
-              <h4>Email</h4>
-              <p id="contact-email">alex.thompson@example.com</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">📞</div>
-            <div class="contact-details">
-              <h4>Phone</h4>
-              <p aria-label="Phone number">+1 (555) 123-4567</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">📍</div>
-            <div class="contact-details">
-              <h4>Location</h4>
-              <p>Remote / Based in United States</p>
-            </div>
-          </div>
-
-          <!-- Resume quick actions -->
-          <div class="section-subtitle" style="margin-top:1rem;">Resume (PDF)</div>
-          <div style="text-align:center">
-            <!-- Direct download link (simple and crawlable) -->
-            <a id="direct-resume-link" class="resume-button" href="https://example.com/resume.pdf" download="Alex-Thompson-Resume.pdf" aria-label="Download resume PDF">Download Resume (PDF)</a>
-
-            <!-- Resumable download controls (best-effort client-side) -->
-            <div style="margin-top:0.75rem;">
-              <div class="resume-actions" role="group" aria-label="Resume download controls">
-                <button id="start-resume" class="resume-button" type="button">Start/Resume Download</button>
-                <button id="pause-resume" class="resume-button" type="button" disabled>Pause</button>
-                <button id="cancel-resume" class="resume-button" type="button" disabled>Cancel</button>
-              </div>
-              <div style="max-width:480px; margin:0.75rem auto 0;">
-                <div class="progress" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div>
-                <div id="resume-status" style="margin-top:0.5rem; color:var(--text-secondary); font-size:0.95rem;">Status: Idle</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <form id="contact-form" class="contact-form" aria-label="Contact form" novalidate>
-          <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input id="name" name="name" class="form-input" type="text" required aria-required="true" />
-          </div>
-
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" class="form-input" type="email" required aria-required="true" />
-          </div>
-
-          <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" rows="6" class="form-textarea" required aria-required="true"></textarea>
-          </div>
-
-          <div class="form-group">
-            <button type="submit" class="form-button" id="send-button">Send Message</button>
-          </div>
-
-          <div id="form-feedback" aria-live="polite" style="color:var(--text-secondary); font-size:0.95rem"></div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="footer-content">
-      <p><strong>Alex Thompson</strong></p>
-      <p class="tagline">Delivering reliable IT, automation and business analysis solutions.</p>
-      <p style="margin-top:0.75rem; font-size:0.9rem; color:#9ca3af">© <span id="year"></span> Alex Thompson. All rights reserved.</p>
+    <h1 id="hero-title">Building Solutions &amp; Connecting People</h1>
+    <p class="description" id="hero-description">Passionate about creating innovative software solutions and delivering exceptional customer experiences. Combining technical expertise with strong communication skills to bridge the gap between technology and people.</p>
+    <div class="hero-buttons"><a href="#projects" class="btn btn-primary">View My Work</a> <a href="#contact" class="btn btn-secondary">Get In Touch</a>
     </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="about section">
+   <h2 class="section-title">About Me</h2>
+   <p class="section-subtitle">Dedicated professional with expertise in both software development and customer service excellence</p>
+   <div class="about-grid">
+    <div class="about-content">
+     <h3>My Journey</h3>
+     <p>With over 5 years of experience in software engineering and 3 years in call center operations, I bring a unique perspective that combines technical problem-solving with exceptional interpersonal skills.</p>
+     <p>I specialize in creating user-friendly applications while maintaining a deep understanding of customer needs and communication best practices. This dual expertise allows me to build solutions that truly serve end users.</p>
+     <div class="skills-grid">
+      <div class="skill-item"><span class="skill-icon">💻</span> <span class="skill-name">Full-Stack Development</span>
+      </div>
+      <div class="skill-item"><span class="skill-icon">📞</span> <span class="skill-name">Customer Support</span>
+      </div>
+      <div class="skill-item"><span class="skill-icon">🗣️</span> <span class="skill-name">Communication</span>
+      </div>
+      <div class="skill-item"><span class="skill-icon">🔧</span> <span class="skill-name">Problem Solving</span>
+      </div>
+     </div>
+    </div>
+    <div class="about-image">
+     <div class="profile-card">
+      <div class="profile-avatar">
+       👨‍💻
+      </div>
+      <div class="profile-info">
+       <h4 id="profile-name">John Smith</h4>
+       <p>Software Engineer &amp; Call Center Agent</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Services Section -->
+  <section id="services" class="services section">
+   <h2 class="section-title">My Services</h2>
+   <p class="section-subtitle">Comprehensive solutions combining technical expertise with customer-focused approach</p>
+   <div class="services-grid">
+    <div class="service-card">
+     <div class="service-icon">
+      💻
+     </div>
+     <h3 class="service-title">Software Development</h3>
+     <p class="service-description">Custom web applications, mobile apps, and software solutions tailored to your business needs.</p>
+     <ul class="service-features">
+      <li>Full-stack web development</li>
+      <li>Mobile app development</li>
+      <li>Database design &amp; optimization</li>
+      <li>API development &amp; integration</li>
+      <li>Code review &amp; optimization</li>
+     </ul>
+    </div>
+    <div class="service-card">
+     <div class="service-icon">
+      📞
+     </div>
+     <h3 class="service-title">Customer Support Solutions</h3>
+     <p class="service-description">Professional customer service and support system optimization for enhanced customer satisfaction.</p>
+     <ul class="service-features">
+      <li>Customer service training</li>
+      <li>Support process optimization</li>
+      <li>Call center setup &amp; management</li>
+      <li>Customer feedback analysis</li>
+      <li>Quality assurance programs</li>
+     </ul>
+    </div>
+   </div>
+  </section><!-- Projects Section -->
+  <section id="projects" class="projects section">
+   <h2 class="section-title">Featured Projects</h2>
+   <p class="section-subtitle">Showcasing successful implementations across software development and customer service</p>
+   <div class="projects-grid">
+    <div class="project-card">
+     <div class="project-header"><span class="project-icon">🛒</span>
+      <h3 class="project-title">E-Commerce Platform</h3>
+      <p class="project-type">Full-Stack Development</p>
+     </div>
+     <div class="project-body">
+      <p class="project-description">Built a complete e-commerce solution with user authentication, payment processing, inventory management, and integrated customer support chat system.</p>
+      <div class="project-tech"><span class="tech-tag">React</span> <span class="tech-tag">Node.js</span> <span class="tech-tag">MongoDB</span> <span class="tech-tag">Stripe API</span>
+      </div><a href="#" class="project-link">View Project →</a>
+     </div>
+    </div>
+    <div class="project-card">
+     <div class="project-header"><span class="project-icon">📊</span>
+      <h3 class="project-title">Customer Analytics Dashboard</h3>
+      <p class="project-type">Data Visualization</p>
+     </div>
+     <div class="project-body">
+      <p class="project-description">Developed a real-time dashboard for call center metrics, customer satisfaction tracking, and performance analytics with interactive visualizations.</p>
+      <div class="project-tech"><span class="tech-tag">Vue.js</span> <span class="tech-tag">D3.js</span> <span class="tech-tag">Python</span> <span class="tech-tag">PostgreSQL</span>
+      </div><a href="#" class="project-link">View Project →</a>
+     </div>
+    </div>
+    <div class="project-card">
+     <div class="project-header"><span class="project-icon">📱</span>
+      <h3 class="project-title">Support Ticket Mobile App</h3>
+      <p class="project-type">Mobile Development</p>
+     </div>
+     <div class="project-body">
+      <p class="project-description">Created a mobile application for customer support agents to manage tickets, access knowledge base, and communicate with customers on-the-go.</p>
+      <div class="project-tech"><span class="tech-tag">React Native</span> <span class="tech-tag">Firebase</span> <span class="tech-tag">Redux</span> <span class="tech-tag">REST API</span>
+      </div><a href="#" class="project-link">View Project →</a>
+     </div>
+    </div>
+    <div class="project-card">
+     <div class="project-header"><span class="project-icon">🤖</span>
+      <h3 class="project-title">AI Chatbot Integration</h3>
+      <p class="project-type">AI &amp; Automation</p>
+     </div>
+     <div class="project-body">
+      <p class="project-description">Implemented an intelligent chatbot system that handles common customer inquiries, reducing call volume by 40% while maintaining high customer satisfaction.</p>
+      <div class="project-tech"><span class="tech-tag">Python</span> <span class="tech-tag">TensorFlow</span> <span class="tech-tag">NLP</span> <span class="tech-tag">WebSocket</span>
+      </div><a href="#" class="project-link">View Project →</a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="contact section">
+   <h2 class="section-title">Get In Touch</h2>
+   <p class="section-subtitle">Ready to collaborate? Let's discuss how I can help with your next project</p>
+   <div class="contact-grid">
+    <div class="contact-info">
+     <div class="contact-item">
+      <div class="contact-icon">
+       📧
+      </div>
+      <div class="contact-details">
+       <h4>Email</h4>
+       <p id="contact-email">john.smith@example.com</p>
+      </div>
+     </div>
+     <div class="contact-item">
+      <div class="contact-icon">
+       📱
+      </div>
+      <div class="contact-details">
+       <h4>Phone</h4>
+       <p id="contact-phone">+1 (555) 123-4567</p>
+      </div>
+     </div>
+     <div class="contact-item">
+      <div class="contact-icon">
+       📍
+      </div>
+      <div class="contact-details">
+       <h4>Location</h4>
+       <p id="contact-location">San Francisco, CA</p>
+      </div>
+     </div>
+     <div class="contact-item">
+      <div class="contact-icon">
+       ⏰
+      </div>
+      <div class="contact-details">
+       <h4>Availability</h4>
+       <p>Available for new projects</p>
+      </div>
+     </div>
+    </div>
+    <div class="contact-form">
+     <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Send Message</h3>
+     <form>
+      <div class="form-group"><label for="name" class="form-label">Full Name</label> <input type="text" id="name" class="form-input" required>
+      </div>
+      <div class="form-group"><label for="email" class="form-label">Email Address</label> <input type="email" id="email" class="form-input" required>
+      </div>
+      <div class="form-group"><label for="subject" class="form-label">Subject</label> <input type="text" id="subject" class="form-input" required>
+      </div>
+      <div class="form-group"><label for="message" class="form-label">Message</label> <textarea id="message" rows="5" class="form-textarea" required></textarea>
+      </div><button type="submit" class="form-button">Send Message</button>
+     </form>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <p>© 2024 <span id="footer-name">John Smith</span>. All rights reserved.</p>
+    <p class="tagline">Building bridges between technology and people.</p>
+   </div>
   </footer>
-
-  <!-- Non-blocking small JS: theme, accessibility improvements, contact form behavior, and resumable download helper -->
   <script>
-    (function(){
-      // Theme handling
-      var root = document.documentElement;
-      var THEME_KEY = 'site-theme';
-      var themeToggleBtn = document.getElementById('theme-toggle');
-      var themeIcon = document.getElementById('theme-icon');
-      var themeStateText = document.getElementById('theme-state-text');
+        // Configuration object
+        const defaultConfig = {
+            site_title: "John Smith",
+            professional_title: "Software Engineer & Call Center Agent",
+            hero_title: "Building Solutions & Connecting People",
+            hero_description: "Passionate about creating innovative software solutions and delivering exceptional customer experiences. Combining technical expertise with strong communication skills to bridge the gap between technology and people.",
+            contact_email: "john.smith@example.com",
+            contact_phone: "+1 (555) 123-4567",
+            contact_location: "San Francisco, CA",
+            background_color: "#f8fafc",
+            surface_color: "#ffffff",
+            text_color: "#0f172a",
+            primary_action_color: "#1e40af",
+            secondary_action_color: "#3b82f6",
+            font_family: "Inter",
+            font_size: 16
+        };
 
-      function applyTheme(theme){
-        if(theme === 'dark'){
-          root.classList.add('dark-theme');
-          themeToggleBtn.setAttribute('aria-pressed', 'true');
-          themeIcon.textContent = '🌙';
-          themeStateText.textContent = 'Dark mode';
-        } else {
-          root.classList.remove('dark-theme');
-          themeToggleBtn.setAttribute('aria-pressed', 'false');
-          themeIcon.textContent = '☀️';
-          themeStateText.textContent = 'Light mode';
+        // Element SDK implementation
+        const elementConfig = {
+            defaultConfig: defaultConfig,
+            onConfigChange: async (config) => {
+                // Update text content
+                const siteTitle = config.site_title || defaultConfig.site_title;
+                const professionalTitle = config.professional_title || defaultConfig.professional_title;
+                const heroTitle = config.hero_title || defaultConfig.hero_title;
+                const heroDescription = config.hero_description || defaultConfig.hero_description;
+                const contactEmail = config.contact_email || defaultConfig.contact_email;
+                const contactPhone = config.contact_phone || defaultConfig.contact_phone;
+                const contactLocation = config.contact_location || defaultConfig.contact_location;
+
+                document.getElementById('site-title').textContent = siteTitle;
+                document.getElementById('professional-title').textContent = professionalTitle;
+                document.getElementById('hero-title').textContent = heroTitle;
+                document.getElementById('hero-description').textContent = heroDescription;
+                document.getElementById('contact-email').textContent = contactEmail;
+                document.getElementById('contact-phone').textContent = contactPhone;
+                document.getElementById('contact-location').textContent = contactLocation;
+                document.getElementById('profile-name').textContent = siteTitle;
+                document.getElementById('footer-name').textContent = siteTitle;
+
+                // Update colors
+                const backgroundColor = config.background_color || defaultConfig.background_color;
+                const surfaceColor = config.surface_color || defaultConfig.surface_color;
+                const textColor = config.text_color || defaultConfig.text_color;
+                const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+                const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+                document.documentElement.style.setProperty('--bg-primary', backgroundColor);
+                document.documentElement.style.setProperty('--bg-secondary', surfaceColor);
+                document.documentElement.style.setProperty('--text-primary', textColor);
+                document.documentElement.style.setProperty('--blue-primary', primaryActionColor);
+                document.documentElement.style.setProperty('--blue-secondary', secondaryActionColor);
+
+                // Update font
+                const customFont = config.font_family || defaultConfig.font_family;
+                const baseFontStack = 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+                document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+                // Update font sizes
+                const baseSize = config.font_size || defaultConfig.font_size;
+                document.body.style.fontSize = `${baseSize}px`;
+            },
+            mapToCapabilities: (config) => ({
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }
+            }),
+            mapToEditPanelValues: (config) => new Map([
+                ["site_title", config.site_title || defaultConfig.site_title],
+                ["professional_title", config.professional_title || defaultConfig.professional_title],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_description", config.hero_description || defaultConfig.hero_description],
+                ["contact_email", config.contact_email || defaultConfig.contact_email],
+                ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+                ["contact_location", config.contact_location || defaultConfig.contact_location]
+            ])
+        };
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init(elementConfig);
         }
-      }
-      function getPreferredTheme(){
-        try {
-          var saved = localStorage.getItem(THEME_KEY);
-          if(saved === 'dark' || saved === 'light') return saved;
-        } catch(e) {}
-        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-        return 'light';
-      }
-      applyTheme(getPreferredTheme());
-      themeToggleBtn.addEventListener('click', function(){
-        var isDark = root.classList.contains('dark-theme');
-        var newTheme = isDark ? 'light' : 'dark';
-        applyTheme(newTheme);
-        try { localStorage.setItem(THEME_KEY, newTheme); } catch(e){}
-      });
-      try {
-        if(!localStorage.getItem(THEME_KEY) && window.matchMedia){
-          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
-            applyTheme(e.matches ? 'dark' : 'light');
-          });
-        }
-      } catch(e) {}
-
-      // Year
-      var yearEl = document.getElementById('year');
-      if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-      // Contact form (same as before)
-      var form = document.getElementById('contact-form');
-      var feedback = document.getElementById('form-feedback');
-      var sendButton = document.getElementById('send-button');
-
-      function validateEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-
-      form.addEventListener('submit', function(evt){
-        evt.preventDefault();
-        feedback.textContent = '';
-        var name = form.name.value.trim();
-        var email = form.email.value.trim();
-        var message = form.message.value.trim();
-        if(!name || !email || !message){
-          feedback.textContent = 'Please fill in all required fields.';
-          return;
-        }
-        if(!validateEmail(email)){
-          feedback.textContent = 'Please enter a valid email address.';
-          return;
-        }
-        sendButton.disabled = true;
-        sendButton.textContent = 'Sending...';
-        var payload = { name: name, email: email, message: message, source: 'Portfolio site' };
-        fetch('https://example.com/.netlify/functions/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          mode: 'cors'
-        }).then(function(res){
-          if(res.ok){
-            feedback.textContent = 'Thanks! Your message has been sent. I will respond shortly.';
-            form.reset();
-          } else {
-            feedback.textContent = 'Could not send via the server. Opening mail client as fallback...';
-            window.location.href = 'mailto:alex.thompson@example.com?subject=' + encodeURIComponent('Contact from portfolio: ' + name) + '&body=' + encodeURIComponent(message + '\n\n---\n' + name + '\n' + email);
-          }
-        }).catch(function(){
-          feedback.textContent = 'Network error. Opening mail client as fallback...';
-          window.location.href = 'mailto:alex.thompson@example.com?subject=' + encodeURIComponent('Contact from portfolio: ' + name) + '&body=' + encodeURIComponent(message + '\n\n---\n' + name + '\n' + email);
-        }).finally(function(){
-          sendButton.disabled = false;
-          sendButton.textContent = 'Send Message';
-        });
-      });
-
-      // ---------- Resumable Download Helper (best-effort client-side implementation) ----------
-      // Notes:
-      // - Full resumable downloads require server support (Accept-Ranges / Range requests).
-      // - This helper tries to detect range support, performs chunked range requests and stores a partial blob in IndexedDB so download can be resumed later.
-      // - For large files or heavy usage, server-side resumable endpoints or dedicated resumable transfer libraries are preferable.
-      var RESUME_URL = 'https://example.com/resume.pdf'; // replace with your actual resume URL
-      var CHUNK_SIZE = 1024 * 1024; // 1MB
-      var dbName = 'resume-download-db';
-      var storeName = 'downloads';
-
-      var startBtn = document.getElementById('start-resume');
-      var pauseBtn = document.getElementById('pause-resume');
-      var cancelBtn = document.getElementById('cancel-resume');
-      var progressBar = document.getElementById('progress-bar');
-      var statusEl = document.getElementById('resume-status');
-      var directLink = document.getElementById('direct-resume-link');
-
-      // Add href of direct link to use RESUME_URL constant (keeps UI consistent if you change variable)
-      if(directLink) directLink.href = RESUME_URL;
-
-      // IndexedDB helpers (minimal)
-      function openDB(){
-        return new Promise(function(resolve, reject){
-          var req = indexedDB.open(dbName, 1);
-          req.onupgradeneeded = function(e){
-            var db = e.target.result;
-            if(!db.objectStoreNames.contains(storeName)){
-              db.createObjectStore(storeName, { keyPath: 'url' });
-            }
-          };
-          req.onsuccess = function(e){ resolve(e.target.result); };
-          req.onerror = function(e){ reject(e.target.error); };
-        });
-      }
-
-      function readRecord(db, url){
-        return new Promise(function(resolve, reject){
-          var tx = db.transaction([storeName], 'readonly');
-          var st = tx.objectStore(storeName);
-          var req = st.get(url);
-          req.onsuccess = function(){ resolve(req.result); };
-          req.onerror = function(){ reject(req.error); };
-        });
-      }
-
-      function writeRecord(db, record){
-        return new Promise(function(resolve, reject){
-          var tx = db.transaction([storeName], 'readwrite');
-          var st = tx.objectStore(storeName);
-          var req = st.put(record);
-          req.onsuccess = function(){ resolve(req.result); };
-          req.onerror = function(){ reject(req.error); };
-        });
-      }
-
-      function deleteRecord(db, url){
-        return new Promise(function(resolve, reject){
-          var tx = db.transaction([storeName], 'readwrite');
-          var st = tx.objectStore(storeName);
-          var req = st.delete(url);
-          req.onsuccess = function(){ resolve(); };
-          req.onerror = function(){ reject(req.error); };
-        });
-      }
-
-      // Helper to check server supports Range requests and get content length
-      function probeServer(url){
-        return fetch(url, { method: 'HEAD' }).then(function(res){
-          var acceptRanges = res.headers.get('accept-ranges') || '';
-          var length = parseInt(res.headers.get('content-length') || '0', 10);
-          return { acceptRanges: acceptRanges.toLowerCase().indexOf('bytes') !== -1, length: length };
-        }).catch(function(){
-          return { acceptRanges: false, length: 0 };
-        });
-      }
-
-      // Download controller state
-      var controller = {
-        db: null,
-        running: false,
-        paused: false,
-        abortController: null,
-        total: 0,
-        downloadedBlob: null,
-        downloadedBytes: 0
-      };
-
-      // Start or resume the download
-      async function startOrResume(){
-        startBtn.disabled = true;
-        statusEl.textContent = 'Preparing...';
-        try {
-          controller.db = await openDB();
-        } catch(e){
-          console.warn('IndexedDB not available', e);
-          controller.db = null;
-        }
-
-        var serverInfo = await probeServer(RESUME_URL);
-        if(!serverInfo.length){
-          // Unknown content length: fallback to direct download
-          statusEl.textContent = 'Server did not provide content length; using direct download.';
-          window.location.href = RESUME_URL;
-          startBtn.disabled = false;
-          return;
-        }
-
-        controller.total = serverInfo.length;
-
-        if(!serverInfo.acceptRanges){
-          // Server doesn't support ranges; inform and fallback to direct link
-          statusEl.textContent = 'Server does not support Range requests; direct download will be used.';
-          // Optionally start direct download
-          window.location.href = RESUME_URL;
-          startBtn.disabled = false;
-          return;
-        }
-
-        // Try to read existing partial download
-        var record = null;
-        if(controller.db){
-          try { record = await readRecord(controller.db, RESUME_URL); } catch(e){ record = null; }
-        }
-
-        controller.downloadedBlob = record && record.blob ? record.blob : null;
-        controller.downloadedBytes = controller.downloadedBlob ? controller.downloadedBlob.size : 0;
-
-        if(controller.downloadedBytes >= controller.total){
-          // already complete
-          statusEl.textContent = 'Already downloaded. Preparing file...';
-          createDownloadFromBlob(controller.downloadedBlob);
-          startBtn.disabled = false;
-          return;
-        }
-
-        // Begin chunked range fetch
-        controller.running = true;
-        controller.paused = false;
-        pauseBtn.disabled = false;
-        cancelBtn.disabled = false;
-        startBtn.disabled = true;
-
-        statusEl.textContent = 'Downloading...';
-        controller.abortController = new AbortController();
-
-        try {
-          while(controller.downloadedBytes < controller.total && controller.running && !controller.paused){
-            var rangeStart = controller.downloadedBytes;
-            var rangeEnd = Math.min(rangeStart + CHUNK_SIZE - 1, controller.total - 1);
-            var headers = { 'Range': 'bytes=' + rangeStart + '-' + rangeEnd };
-            var res = await fetch(RESUME_URL, { headers: headers, signal: controller.abortController.signal });
-            if(res.status === 206 || res.status === 200){
-              var ab = await res.arrayBuffer();
-              var chunk = new Blob([ab]);
-              // Merge into a new blob (simple approach)
-              if(controller.downloadedBlob){
-                controller.downloadedBlob = new Blob([controller.downloadedBlob, chunk], { type: 'application/pdf' });
-              } else {
-                controller.downloadedBlob = chunk;
-              }
-              controller.downloadedBytes = controller.downloadedBlob.size;
-
-              // Persist partial blob to IndexedDB for resume later (best-effort)
-              if(controller.db){
-                try {
-                  await writeRecord(controller.db, { url: RESUME_URL, blob: controller.downloadedBlob, fetchedAt: Date.now() });
-                } catch(e){ console.warn('Could not persist partial blob', e); }
-              }
-
-              // Update progress UI
-              var pct = Math.round((controller.downloadedBytes / controller.total) * 100);
-              progressBar.style.width = pct + '%';
-              statusEl.textContent = 'Downloading: ' + pct + '% (' + controller.downloadedBytes + ' / ' + controller.total + ' bytes)';
-
-              // If file finished, break
-              if(controller.downloadedBytes >= controller.total){
-                statusEl.textContent = 'Download complete. Preparing file for save...';
-                break;
-              }
-
-              // If user pauses mid-loop, break
-              if(controller.paused) break;
-            } else {
-              // Server refused range or returned error - fallback
-              statusEl.textContent = 'Server returned ' + res.status + '. Falling back to direct download.';
-              window.location.href = RESUME_URL;
-              return;
-            }
-          }
-
-          // On completion, create a downloadable link
-          if(controller.downloadedBytes >= controller.total){
-            createDownloadFromBlob(controller.downloadedBlob);
-            // Optionally remove DB entry after successful download:
-            if(controller.db){
-              try { await deleteRecord(controller.db, RESUME_URL); } catch(e){}
-            }
-            statusEl.textContent = 'Download finished. File ready.';
-          } else if(controller.paused){
-            statusEl.textContent = 'Paused at ' + controller.downloadedBytes + ' bytes.';
-          }
-        } catch(err){
-          if(err.name === 'AbortError'){
-            statusEl.textContent = 'Download paused.';
-          } else {
-            console.warn('Download error', err);
-            statusEl.textContent = 'Download error. Falling back to direct link.';
-            window.location.href = RESUME_URL;
-          }
-        } finally {
-          controller.running = false;
-          pauseBtn.disabled = true;
-          startBtn.disabled = false;
-        }
-      }
-
-      function pauseDownload(){
-        controller.paused = true;
-        controller.running = false;
-        if(controller.abortController) controller.abortController.abort();
-        pauseBtn.disabled = true;
-        startBtn.disabled = false;
-        statusEl.textContent = 'Paused at ' + controller.downloadedBytes + ' bytes.';
-      }
-
-      async function cancelDownload(){
-        if(controller.abortController) controller.abortController.abort();
-        controller.running = false;
-        controller.paused = false;
-        pauseBtn.disabled = true;
-        cancelBtn.disabled = true;
-        startBtn.disabled = false;
-        progressBar.style.width = '0%';
-        statusEl.textContent = 'Canceled. Partial data removed.';
-        // Remove stored partial if any
-        if(controller.db){
-          try { await deleteRecord(controller.db, RESUME_URL); } catch(e){ console.warn('Failed to delete partial', e); }
-        }
-        controller.downloadedBlob = null;
-        controller.downloadedBytes = 0;
-      }
-
-      function createDownloadFromBlob(blob){
-        if(!blob) return;
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'Alex-Thompson-Resume.pdf';
-        // Programmatically click to trigger save dialog
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 60000);
-      }
-
-      // Wire buttons
-      startBtn.addEventListener('click', function(){ startOrResume(); });
-      pauseBtn.addEventListener('click', function(){ pauseDownload(); });
-      cancelBtn.addEventListener('click', function(){ cancelDownload(); });
-
-      // Enable/disable pause/cancel based on state changes when starting
-      // (We update inside startOrResume; provide simple event toggling here)
-      // Initially disabled
-      pauseBtn.disabled = true;
-      cancelBtn.disabled = true;
-
-      // Small improvement: when user starts, enable pause/cancel
-      (function watchStartBtn(){
-        var orig = startBtn.onclick;
-        // Already wired above; use setInterval to monitor running state to update controls
-        setInterval(function(){
-          if(controller.running){
-            pauseBtn.disabled = false;
-            cancelBtn.disabled = false;
-            startBtn.disabled = true;
-          } else {
-            pauseBtn.disabled = true;
-            // do not auto-disable cancel so user can still cancel after stopped
-            // cancelBtn.disabled = true;
-          }
-        }, 300);
-      })();
-
-      // Expose quick helper for server capability check, useful for recruiters
-      (async function checkServerCapability(){
-        try {
-          var info = await probeServer(RESUME_URL);
-          var capEl = document.createElement('div');
-          capEl.style.fontSize = '0.85rem';
-          capEl.style.color = 'var(--text-secondary)';
-          capEl.style.textAlign = 'center';
-          capEl.style.marginTop = '0.5rem';
-          if(info.length){
-            capEl.textContent = 'Resume file size: ' + info.length + ' bytes. ' + (info.acceptRanges ? 'Server supports resumable downloads.' : 'Server does not support resumable downloads — direct download will be used.');
-          } else {
-            capEl.textContent = 'Could not determine server capabilities for the resume file.';
-          }
-          var parent = document.querySelector('#direct-resume-link').parentNode;
-          parent.appendChild(capEl);
-        } catch(e){}
-      })();
-
-    })();
-  </script>
-</body>
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99633aa232155bc1',t:'MTc2MTc0NjczOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
